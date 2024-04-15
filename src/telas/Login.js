@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from '@react-navigation/native';
 
 
 const PlaceholderImage = require('../component/image/usuario.png');
 
-const Login = () => {
+const Login = ({navigation}) => {
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [senha, setSenha] = useState('');
 
   const onLoginClick = () => {
- 
+    navigation.navigate('Home')
   }
 
-
-  
+  const onPressRegister = () => {
+    navigation.navigate('Registrar')
+  }
 
   return (
     <View style={styles.container}>
@@ -33,6 +34,14 @@ const Login = () => {
         value={senha}
         secureTextEntry={true}
       />
+      
+      <View>
+          <Text>Não possui conta? 
+              <Text onPress={onPressRegister}>Faça o cadastro
+              </Text>
+          </Text>
+      </View>
+
       <TouchableOpacity style={styles.botao} onPress={onLoginClick}>
         <Text style={styles.textoBotao}>Entrar</Text>
       </TouchableOpacity>

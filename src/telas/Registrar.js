@@ -4,13 +4,13 @@ import {createUserWithEmailAndPassword } from "firebase/auth";
 
 const PlaceholderImage = require('../component/image/usuario.png');
 
-const Registrar = () => {
+const Registrar = ({navigation}) => {
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [senha, setSenha] = useState('');
   const [senha2, setSenha2] = useState('');
 
   const onLoginClick = () => {
-    
+    navigation.navigate('Home')
   }
 
   return (
