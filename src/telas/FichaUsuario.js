@@ -1,47 +1,21 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from '../config/firebase';
- 
+import {createUserWithEmailAndPassword } from "firebase/auth";
+
 const PlaceholderImage = require('../component/image/usuario.png');
 
-const Login = ({navigation}) => {
+const FichaUsuario = ({navigation}) => {
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [senha, setSenha] = useState('');
+  const [senha2, setSenha2] = useState('');
 
   const onLoginClick = () => {
-    //
-    console.log("click")
-    signInWithEmailAndPassword( auth, nomeUsuario,  senha)
-    .then( (userCredential)=> {
-        const user =  userCredential.user;
-        //user.email
-        //user.user
-        console.log(user)
-        //
-        navigation.navigate('Home')
-    } )
-    .catch( (error)=> {
-      const errocode = error.code ;
-      const errormsg = error.message ;
-      console.log( errocode );
-      console.log( errormsg );
-      
-      alert( errormsg) ;
-    } );
-
-    
-  }
-
-  const onPressRegister = () => {
-    navigation.navigate('Registrar')
+    navigation.navigate('Home')
   }
 
   return (
-    <View style={styles.container}>
-            <Image source={PlaceholderImage} style={styles.image} />
-            <Text style={styles.titulo}>Login 29 04</Text>
+    <View style={styles.container}>    
+      <Text style={styles.titulo}>Registrar</Text>
       <TextInput
         style={styles.input}
         placeholder="Nome de Usuário"
@@ -50,24 +24,22 @@ const Login = ({navigation}) => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Senha"
+        placeholder="Informe a nova Senha"
         onChangeText={text => setSenha(text)}
         value={senha}
         secureTextEntry={true}
       />
-      
-      <View sytle={styles.textocontainer}>
-          <Text>Não possui conta?
-             <Text style={styles.textoCadastro} onPress={onPressRegister}>   Faça o cadastro
-             </Text>
-          </Text> 
-      </View>
-
+       <TextInput
+        style={styles.input}
+        placeholder="Confirme a nova Senha"
+        onChangeText={text => setSenha2(text)}
+        value={senha2}
+        secureTextEntry={true}
+      />
       <TouchableOpacity style={styles.botao} onPress={onLoginClick}>
         <Text style={styles.textoBotao}>Entrar</Text>
       </TouchableOpacity>
     </View>
-
     
   );
 };
@@ -114,18 +86,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  containerTexto:{
-    width: '100%',
-  },
-  textoCadastro:{
-    color: 'red',
-    fontSize: 16,
-    fontWeight: 'bold',
-    padding: 10,
-  },
-  textocontainer:{
-    backgroundColor: 'red',
-  }
 });
 
-export default Login;
+export default FichaUsuario;

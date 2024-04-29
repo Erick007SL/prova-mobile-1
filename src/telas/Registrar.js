@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import {createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../config/firebase';
 
 const PlaceholderImage = require('../component/image/usuario.png');
 
@@ -10,7 +11,36 @@ const Registrar = ({navigation}) => {
   const [senha2, setSenha2] = useState('');
 
   const onLoginClick = () => {
-    navigation.navigate('Home')
+    if (senha !== senha2) {
+       alert("Passwords don't match.")
+       return
+    }
+
+    createUserWithEmailAndPassword( auth, nomeUsuario,  senha)
+    .then( (userCredential)=> {
+        const user =  userCredential.user;
+        //user.email
+        //user.user
+        console.log(user)
+        //
+        navigation.navigate('Home')
+    } )
+    .catch( (error)=> {
+      const errocode = error.code ;
+      const errormsg = error.message ;
+      console.log( errocode );
+      console.log( errormsg );
+      alert( errormsg) ;
+      if (error.code === 'auth/email-already-in-use') {
+        console.log('Email já cadastrado!');
+      }
+  
+      if (error.code === 'auth/invalid-email') {
+        console.log('Email invalido!');
+      }
+      navigation.navigate('Login')
+    } );
+     
   }
 
   return (

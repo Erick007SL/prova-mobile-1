@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
-import {createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../config/firebase';
+import { signOut } from "firebase/auth";
 
 
 const PlaceholderImage = require('../component/image/soldado.png');
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [senha, setSenha] = useState('');
   const [senha2, setSenha2] = useState('');
@@ -13,6 +14,11 @@ const Home = () => {
   const [ semestre, setSemestre] = useState('');
   const [ disciplina, setDisciplina] = useState('');
 
+  const signOutUser = () => {
+      console.log("saindo");
+      signOut( auth);
+      navigation.navigate('Login')
+  }
 
   const onLoginClick = () => {
     console.log('Nome de Usuário:', nomeUsuario);
@@ -55,6 +61,9 @@ const Home = () => {
       />
       <TouchableOpacity style={styles.botao} onPress={onLoginClick}>
         <Text style={styles.textoBotao}>Entrar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.botao} onPress={signOutUser}>
+        <Text style={styles.textoBotao}>Sair</Text>
       </TouchableOpacity>
     </View>
     
