@@ -12,26 +12,30 @@ const Login = ({navigation}) => {
 
   const onLoginClick = () => {
     //
-    console.log("click")
     signInWithEmailAndPassword( auth, nomeUsuario,  senha)
     .then( (userCredential)=> {
         const user =  userCredential.user;
-        //user.email
-        //user.user
-        console.log(user)
-        //
+        // console.log(user)        //
         navigation.navigate('Home')
     } )
     .catch( (error)=> {
       const errocode = error.code ;
       const errormsg = error.message ;
-      console.log( errocode );
-      console.log( errormsg );
-      
-      alert( errormsg) ;
-    } );
-
-    
+      // tratamento das mensagens de erro pelo error.code      
+      switch (errocode) {
+        case 'auth/invalid-credential':
+          alert( "Usuario ou Senha Invalida !") ; 
+          return null
+        case 'auth/missing-password':
+          alert( "Usuario ou Senha em Branco !") ; 
+          return null
+        case 'auth/invalid-email':
+          alert( "Usuario ou Senha em Branco !") ; 
+          return null
+        default:
+          alert( "Ops, Desculpa algo aconteceu,\n tente novamente!") ; 
+      }      
+    } );    
   }
 
   const onPressRegister = () => {
