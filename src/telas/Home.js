@@ -21,8 +21,9 @@ const Home = ({ navigation }) => {
         <Image source={PlaceholderImage} style={styles.image} />
         <Text style={styles.titulo}>Principal</Text>
       </View>
-      <View sytle={styles.corpo}>
-        <View sytle={styles.menu}>
+
+      <View>
+        <View>
           <TouchableOpacity style={styles.botao} onPress={onLoginClick}>
             <Text style={styles.textoBotao}>Ficha Usuario</Text>
           </TouchableOpacity>
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     gap: 10,
+    backgroundColor: "#9f9",
   },
   image: {
     width: "80%",
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   botao: {
-    backgroundColor: "orange",
+    backgroundColor: "black",
     width: "75%",
     height: 50,
     justifyContent: "center",
@@ -75,16 +77,6 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontSize: 16,
     fontWeight: "bold",
-  },
-  corpo: {
-    backgroundColor: "blue",
-    flex: 1,
-    width: "100%",
-  },
-  menu: {
-    backgroundColor: "red",
-    flex: 1,
-    width: "35%",
   },
 });
 
