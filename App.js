@@ -22,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth,( _user )=>{
-      console.log( 'user: ',_user);
+      // console.log( 'user: ',_user);
       setUser(_user);
       if (initializing) {
         setInitializing(false);
@@ -45,7 +45,13 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user?(
+          <>
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Registrar" component={Registrar} />
+          <Stack.Screen name="Ficha" component={FichaUsuario} />
+          </>
+          
         ):(
           <>
           <Stack.Screen name="Login" component={Login} />

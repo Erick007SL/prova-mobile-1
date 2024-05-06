@@ -15,7 +15,10 @@ const FichaUsuario = ({navigation}) => {
 
   return (
     <View style={styles.container}>    
-      <Text style={styles.titulo}>Registrar</Text>
+      <Text style={styles.titulo}>Ficha Usuário</Text>
+      <View>
+         <Text> Foto</Text>
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Nome de Usuário"
@@ -86,6 +89,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  foto : {
+    width: '100%',
+    height: 90,
+    backgroundColor: 'gray',
+    borderWidth: 1,
+    borderColor: '#ccc000',
+    borderRadius: 5,
+  }
 });
 
 export default FichaUsuario;
