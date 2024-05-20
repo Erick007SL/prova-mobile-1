@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
 // import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../config/firebase';
+
  
 const PlaceholderImage = require('../component/image/usuario.png');
 
@@ -16,7 +17,10 @@ const Login = ({navigation}) => {
     .then( (userCredential)=> {
         const user =  userCredential.user;
         // console.log(user)        //
-        navigation.navigate('Home')
+        // navigation.navigate('Home',
+        //   { screen: 'Home',
+        //     params: { user: {user}} }, )
+        navigation.push('Login') ;
     } )
     .catch( (error)=> {
       const errocode = error.code ;
@@ -45,7 +49,7 @@ const Login = ({navigation}) => {
   return (
     <View style={styles.container}>
             <Image source={PlaceholderImage} style={styles.image} />
-            <Text style={styles.titulo}>Login 29 04</Text>
+            <Text style={styles.titulo}>Login Aula 20/05/24</Text>
       <TextInput
         style={styles.input}
         placeholder="Nome de Usuário"

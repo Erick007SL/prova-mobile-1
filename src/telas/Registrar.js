@@ -12,7 +12,7 @@ const Registrar = ({navigation}) => {
 
   const onLoginClick = () => {
     // confere se a senha e iqual a senha de confirmação
-    console.log( '>>> ', (( senha.trim() === '') || ( senha2.trim() === '') ))
+    // console.log( '>>> ', (( senha.trim() === '') || ( senha2.trim() === '') ))
     if ( senha.trim() === '' ||  senha2.trim() === '' ) {
       alert("Obrigatorio informar a senha e confirmação, \n tente novamente!")
       return
@@ -25,9 +25,9 @@ const Registrar = ({navigation}) => {
     createUserWithEmailAndPassword( auth, nomeUsuario,  senha)
     .then( (userCredential)=> {
         const user =  userCredential.user;
-        console.log(user)
+        //console.log(user)
         //
-        navigation.navigate('Home')
+        navigation.navigate('Login')
     } )
     .catch( (error)=> {
       const errocode = error.code ;
@@ -48,6 +48,10 @@ const Registrar = ({navigation}) => {
       navigation.navigate('Login')
     } );
      
+  }
+
+  const onPressRegister = () => {
+    navigation.navigate('Login');
   }
 
   return (
@@ -74,6 +78,14 @@ const Registrar = ({navigation}) => {
         value={senha2}
         secureTextEntry={true}
       />
+
+      <View sytle={styles.textocontainer}>
+          <Text>Já possui conta?
+             <Text style={styles.textoCadastro} onPress={onPressRegister}>   Faça o Login
+             </Text>
+          </Text> 
+      </View>
+
       <TouchableOpacity style={styles.botao} onPress={onLoginClick}>
         <Text style={styles.textoBotao}>Registrar</Text>
       </TouchableOpacity>

@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-// telas
-import Home from "./src/telas/Home";
-import Login from "./src/telas/Login";
-import Registrar from "./src/telas/Registrar";
-import FichaUsuario from "./src/telas/FichaUsuario";
+
 // usestate e usefect
 import { onAuthStateChanged } from "firebase/auth";
+
 // import { UserInfo } from "firebase/auth"
 import { auth } from "./src/config/firebase";
 import { ActivityIndicator, View } from "react-native";
+
+// rotas de navegação
 import TabNavigator from "./src/component/TabNavigator";
 import StackNavigator from "./src/component/StackerNavigator";
-//
 
 const App = () => {
   const [initializing, setInitializing] = useState(true);
@@ -38,10 +36,10 @@ const App = () => {
       </View>
     );
   }
-
+//{user ? <TabNavigator /> : <StackNavigator />}
   return (
-    <NavigationContainer>
-      {user ? <TabNavigator /> : <StackNavigator />}
+    <NavigationContainer>      
+      {user ? <TabNavigator user={user} /> : <StackNavigator user={user} /> }
       <StatusBar style="auto" />
     </NavigationContainer>
   );
