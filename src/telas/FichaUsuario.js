@@ -19,6 +19,7 @@ const FichaUsuario = ({navigation}) => {
       <View>
          <Text> Foto</Text>
       </View>
+      
       <TextInput
         style={styles.input}
         placeholder="Nome de Usuário"
