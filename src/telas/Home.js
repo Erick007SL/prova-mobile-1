@@ -27,10 +27,7 @@ const Home = ({ navigation, route }) => {
       </View>
 
       <View>
-          <Text> apelido: {nome}</Text>
           <Text> email:  {email}</Text>          
-          <Text> telefone: {phoneNumber}</Text>
-          <Text> foto url: {photoURL}</Text>
           <Text> uuid: {uid}</Text>
           <Text> email verificado: {emailVerified}</Text>
         <View>
@@ -51,7 +48,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     gap: 10,
-    backgroundColor: "#9f9",
+    backgroundColor: "#ecb969",
   },
   image: {
     width: "80%",
@@ -73,13 +70,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   botao: {
-    backgroundColor: "black",
+    backgroundColor: "#e99552",
     width: "75%",
     height: 50,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
     marginTop: 10,
+    elevation: 6,
   },
   textoBotao: {
     color: "#ffffff",

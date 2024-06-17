@@ -48,17 +48,16 @@ const Login = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-            <Image source={PlaceholderImage} style={styles.image} />
-            <Text style={styles.titulo}>Login Aula 20/05/24</Text>
+            <Text style={styles.titulo}>Logar</Text>
       <TextInput
         style={styles.input}
-        placeholder="Nome de Usuário"
+        placeholder="E-mail:"
         onChangeText={text => setNomeUsuario(text)}
         value={nomeUsuario}
       />
       <TextInput
         style={styles.input}
-        placeholder="Senha"
+        placeholder="Senha:"
         onChangeText={text => setSenha(text)}
         value={senha}
         secureTextEntry={true}
@@ -109,13 +108,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   botao: {
-    backgroundColor: 'orange',
+    backgroundColor: '#e99552',
     width: '75%',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
     marginTop: 10,
+    elevation: 6,
   },
   textoBotao: {
     color: '#ffffff',
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   textoCadastro:{
-    color: 'red',
+    color: '#e99552',
     fontSize: 16,
     fontWeight: 'bold',
     padding: 10,
