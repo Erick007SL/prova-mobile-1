@@ -11,8 +11,6 @@ const Registrar = ({navigation}) => {
   const [senha2, setSenha2] = useState('');
 
   const onLoginClick = () => {
-    // confere se a senha e iqual a senha de confirmação
-    // console.log( '>>> ', (( senha.trim() === '') || ( senha2.trim() === '') ))
     if ( senha.trim() === '' ||  senha2.trim() === '' ) {
       alert("Obrigatorio informar a senha e confirmação, \n tente novamente!")
       return
@@ -21,19 +19,14 @@ const Registrar = ({navigation}) => {
        alert("Senha informada estão divergente, \n tente novamente!")
        return
     }
-    //
     createUserWithEmailAndPassword( auth, nomeUsuario,  senha)
     .then( (userCredential)=> {
         const user =  userCredential.user;
-        //console.log(user)
-        //
         navigation.navigate('Login')
     } )
     .catch( (error)=> {
       const errocode = error.code ;
       const errormsg = error.message ;
-      // console.log( errocode );
-      // console.log( errormsg );
       switch (errocode) {
         case 'auth/email-already-in-use':
           alert( "Email já esta em utilização !") ; 
@@ -123,19 +116,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   botao: {
-    backgroundColor: 'orange',
+    backgroundColor: '#e99552',
     width: '75%',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
     marginTop: 10,
+    elevation: 5,
   },
   textoBotao: {
     color: '#ffffff',
     fontSize: 16,
     fontWeight: 'bold',
   },
+  textoCadastro: {
+    color: '#e99552'
+  }
 });
 
 export default Registrar;
