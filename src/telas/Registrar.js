@@ -7,6 +7,8 @@ const PlaceholderImage = require('../component/image/usuario.png');
 
 const Registrar = ({navigation}) => {
   const [nomeUsuario, setNomeUsuario] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [senha2, setSenha2] = useState('');
 
@@ -19,6 +21,7 @@ const Registrar = ({navigation}) => {
        alert("Senha informada estão divergente, \n tente novamente!")
        return
     }
+    //
     createUserWithEmailAndPassword( auth, nomeUsuario,  senha)
     .then( (userCredential)=> {
         const user =  userCredential.user;
@@ -53,9 +56,21 @@ const Registrar = ({navigation}) => {
       <Text style={styles.titulo}>Registrar</Text>
       <TextInput
         style={styles.input}
-        placeholder="email do usuario"
+        placeholder="nome do usuario"
         onChangeText={text => setNomeUsuario(text)}
         value={nomeUsuario}
+      />
+       <TextInput
+        style={styles.input}
+        placeholder="Telefone do usuario"
+        onChangeText={text => setTelefone(text)}
+        value={telefone}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="email do usuario"
+        onChangeText={text => setEmail(text)}
+        value={email}
       />
       <TextInput
         style={styles.input}
